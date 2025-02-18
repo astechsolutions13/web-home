@@ -104,12 +104,6 @@ header .navbar {
     display: flex;
     align-items: center;
 }
-.navbar-brand img {
-    max-height: 100%;
-    width: auto;
-    max-width: none; /* Ensures the image doesn't shrink too much */
-    object-fit: contain;
-}
 .navbar-default .navbar-brand {
     color: #1891EC;
 }
