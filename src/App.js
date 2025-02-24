@@ -9,9 +9,10 @@ function App() {
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900 p-6">
       <Header />
-      <HeroSection/>
-      <Services/>
-      <ContactSection/>
+      <section id="home"><HeroSection/></section>
+      <section id="services"><Services/></section>
+      <section id="contact"><ContactSection/></section>
+      
     </div>
   );
 }
