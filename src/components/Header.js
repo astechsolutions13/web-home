@@ -18,7 +18,7 @@ const Header = () => {
         <ul className="nav-list">
           <li>
             <a
-              href="#home"
+              href="#/home"
               className={`nav-link ${activeLink === "home" ? "active" : ""}`}
               onClick={() => handleClick("home")}
             >
@@ -27,7 +27,7 @@ const Header = () => {
           </li>
           <li>
             <a
-              href="#services"
+              href="#/services"
               className={`nav-link ${activeLink === "services" ? "active" : ""}`}
               onClick={() => handleClick("services")}
             >
@@ -36,7 +36,7 @@ const Header = () => {
           </li>
           <li>
             <a
-              href="#contact"
+              href="#/contact"
               className={`nav-link ${activeLink === "contact" ? "active" : ""}`}
               onClick={() => handleClick("contact")}
             >
