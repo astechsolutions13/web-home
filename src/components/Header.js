@@ -1,19 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "../styles/header.css"; // Import the CSS file
 import logo from "../images/logo.png"; // Import the logo image
 
 const Header = () => {
   const [activeLink, setActiveLink] = useState("home");
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // State to manage mobile menu visibility
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef(null);
 
+  // Function to handle clicks inside menu
   const handleClick = (link) => {
     setActiveLink(link);
     setIsMenuOpen(false); // Close the menu when a link is clicked
   };
 
+  // Toggle menu visibility
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen); // Toggle menu visibility
+    setIsMenuOpen(!isMenuOpen);
   };
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <header className="header">
@@ -29,7 +46,7 @@ const Header = () => {
       </div>
 
       {/* Navigation Menu */}
-      <nav className={`nav ${isMenuOpen ? "open" : ""}`}>
+      <nav ref={menuRef} className={`nav ${isMenuOpen ? "open" : ""}`}>
         <ul className="nav-list">
           <li>
             <a
