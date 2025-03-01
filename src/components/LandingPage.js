@@ -10,7 +10,7 @@ const images = [
   "https://images.pexels.com/photos/3184357/pexels-photo-3184357.jpeg"
 ];
 
-const LandingPage = () => {
+const LandingPage = ({scrollToSection}) => {
   return (
     <div className="container">
       {/* Hero Section */}
@@ -20,7 +20,7 @@ const LandingPage = () => {
           <p>
             Step into the future with our state-of-the-art AI solutions. Unleash the potential of machine learning to innovate, optimize, and transform your business processes.
           </p>
-          <button className="journey-btn">Start Journey</button>
+          <button onClick={() => scrollToSection("contact")} className="journey-btn">Start Journey</button>
         </div>
         <div className="hero-images">
           <div className="image-grid">
