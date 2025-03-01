@@ -16,8 +16,7 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  width: fit-content; /* ✅ Makes header wrap its content */
-  max-width: 100%;
+  width: 100%;
 }
 
 /* Logo */
@@ -58,38 +57,17 @@
   align-items: center;
 }
 
-.nav-list {
-  display: flex;
-  list-style: none;
-  gap: 20px;
-}
-
-.nav-link {
-  text-decoration: none;
-  color: #333;
-  font-size: 16px;
-  padding: 8px 15px;
-  transition: color 0.3s ease, background-color 0.3s ease;
-}
-
-.nav-link:hover {
-  color: #007BFF;
-}
-
-.nav-link.active {
-  background-color: #ADD8E6;
-  color: #000;
-  border-radius: 4px;
-}
-
 /* Responsive Styles */
-/* Mobile Menu */
 @media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
   .nav {
-    position: absolute; /* ✅ Position relative to the header */
-    top: 50px; /* ✅ Adjusted position */
+    position: absolute;
+    top: 60px; /* ✅ Corrected position */
     right: 10px;
-    width: fit-content; /* ✅ Prevents full-width expansion */
+    width: 200px; /* ✅ Prevents full-width */
     background-color: white;
     flex-direction: column;
     align-items: flex-start;
@@ -114,6 +92,5 @@
     font-size: 16px;
     text-align: left;
     display: block;
-    width: auto; /* ✅ Prevents full-width links */
   }
 }
