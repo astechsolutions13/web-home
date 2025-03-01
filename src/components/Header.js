@@ -1,40 +1,36 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../styles/header.css"; // Import the CSS file
 import logo from "../images/logo.png"; // Import the logo image
 
 const Header = () => {
   const [activeLink, setActiveLink] = useState("home");
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const menuRef = useRef(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // State to manage mobile menu visibility
+  const menuRef = useRef(null); // Ref to track the menu element
 
-  // Function to handle clicks inside menu
   const handleClick = (link) => {
     setActiveLink(link);
     setIsMenuOpen(false); // Close the menu when a link is clicked
   };
 
-  // Toggle menu visibility
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen(!isMenuOpen); // Toggle menu visibility
   };
 
   // Close menu when clicking outside
   useEffect(() => {
-    const handleClickOutside = (event) => {
+    const handleOutsideClick = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
         setIsMenuOpen(false);
       }
     };
 
     if (isMenuOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener("mousedown", handleOutsideClick);
     } else {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("mousedown", handleOutsideClick);
     }
 
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleOutsideClick);
   }, [isMenuOpen]);
 
   return (
